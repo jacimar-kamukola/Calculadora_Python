@@ -7,6 +7,9 @@ tela.geometry("350x450")
 tela.resizable(width=False, height=False)
 
 valor_actual = ""
+#end
+
+#lista de botoes
 butoes = [
     ["7", "8", "9", "/"],
     ["4", "5", "6", "*"],
@@ -15,14 +18,21 @@ butoes = [
     ["C", "±", "%", "Modo"]
 
 ]
+#end
+
 #widgets
 
+#display do numeros
 display = ctk.CTkEntry(tela, font=("Arial", 24), justify="right")
 display.pack(padx=20, pady=20, fill="x")
+#end
 
+#frame do botoes
 btn_frame = ctk.CTkFrame(tela)
 btn_frame.pack(padx=20, pady=10, fill="both", expand=True)
+#end
 
+#criação dos botoes
 for i, linha in enumerate(butoes):
     for j, texto in enumerate(linha):
         btn = ctk.CTkButton(btn_frame, text=texto, font=("Arial", 18), command=lambda t=texto:on_click(t))
@@ -32,7 +42,9 @@ for i in range(len(butoes)):
     btn_frame.grid_rowconfigure(i, weight=1)
 for j in range(len(butoes[0])):
     btn_frame.grid_columnconfigure(j, weight=1)
+#end
 
+#configuração dos clicks
 def on_click(texto):
     global valor_actual
 
@@ -67,6 +79,6 @@ def on_click(texto):
 
     display.delete(0, "end")
     display.insert(0, valor_actual)
-
+#end
 
 tela.mainloop()
